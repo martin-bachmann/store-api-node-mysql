@@ -58,7 +58,7 @@ describe('Verifica a camada controller de product', function () {
       await productController.getProductById(req, res);
 
       expect(res.status).to.have.been.calledWith(404);
-      expect(res.json).to.have.been.calledWith(getProductByIdErrorReturn.message);
+      expect(res.json).to.have.been.calledWith({ message: getProductByIdErrorReturn.message });
     })
   })
 })
