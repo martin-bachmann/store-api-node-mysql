@@ -50,7 +50,7 @@ describe('Verifica a camada controller de product', function () {
       const req = { params: { id: 9999 }};
 
       res.status = sinon.stub().returns(res);
-      res.json = sinon.stub().returns();
+      res.json = sinon.stub().returns(res.message);
 
       sinon.stub(productService, 'getProductById')
         .resolves(getProductByIdErrorReturn)
