@@ -7,7 +7,7 @@ chai.use(sinonChai);
 
 const { productController } = require('../../../src/controllers');
 const { productService } = require('../../../src/services');
-const { getProductsReturn, getProductByIdSucessReturn, getProductByIdErrorReturn } = require('./mocks/product.controller.mock');
+const { getProductsReturn, getProductByIdSucessReturn, getProductByIdErrorReturn, addNewProductSuccessReturn } = require('./mocks/product.controller.mock');
 
 describe('Verifica a camada controller de product', function () {
   afterEach(sinon.restore);
@@ -47,7 +47,7 @@ describe('Verifica a camada controller de product', function () {
     })
     it('Produto não encontrado', async function () {
       const res = {};
-      const req = { params: { id: 9999 }};
+      const req = { params: { id: 9999 } };
 
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns(res.message);
@@ -59,6 +59,23 @@ describe('Verifica a camada controller de product', function () {
 
       expect(res.status).to.have.been.calledWith(404);
       expect(res.json).to.have.been.calledWith({ message: getProductByIdErrorReturn.message });
+    })
+  })
+  describe('Verifica a função de adicionar um novo produto', function () {
+    it('Caso de sucesso', async function () {
+      const res = {};
+      const req = { body: { name: 'ProdutoX' } };
+
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns(res.message);
+
+      sinon.stub(productService, 'addNewProduct')
+        .resolves(addNewProductSuccessReturn)
+      
+      await productController.addNewProduct(req, res);
+
+      expect(res.status).to.have.been.calledWith(201);
+      expect(res.json).to.have.been.calledWith(addNewProductSuccessReturn.message);
     })
   })
 })
