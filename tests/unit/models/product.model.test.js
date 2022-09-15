@@ -38,7 +38,6 @@ describe('Verifica a camada model de product', function () {
       sinon.stub(connection, 'execute').resolves([insertSuccessReturn]);
 
       const result = await productModel.insert({ name: 'ProdutoX' });
-      console.log(result);
 
       expect(result).to.been.deep.equal(insertSuccessReturn.insertId);
     })

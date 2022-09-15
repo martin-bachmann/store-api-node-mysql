@@ -1,5 +1,4 @@
 const { productModel } = require('../models');
-const { insert } = require('../models/product.model');
 
 const getProducts = async () => {
   const result = await productModel.findAll();
@@ -13,7 +12,7 @@ const getProductById = async ({ id }) => {
 };
 
 const addNewProduct = async (product) => {
-  const insertId = await insert(product);
+  const insertId = await productModel.insert(product);
   return { type: null, message: { id: insertId, ...product } };
 };
 
