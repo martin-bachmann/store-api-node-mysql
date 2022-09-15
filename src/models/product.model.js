@@ -15,6 +15,7 @@ const findById = async (productId) => {
 };
 
 const insert = async (product) => {
+  console.log('oi');
   const columns = Object.keys(product)
     .map((key) => `${key}`)
     .join(', ');
@@ -27,7 +28,6 @@ const insert = async (product) => {
     `INSERT INTO products (${columns}) VALUE (${placeholders})`,
     [...Object.values(product)],
   );
-
   return insertId;
 };
 

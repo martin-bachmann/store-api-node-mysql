@@ -1,3 +1,4 @@
+// getAllProducts mock values
 const findAllReturn = [
   {
     "id": 1,
@@ -9,7 +10,7 @@ const findAllReturn = [
   }
 ]
 
-
+// getProductById mock values
 const findByIdSuccessReturn = {
   "id": 1,
   "name": "Martelo de Thor"
@@ -18,8 +19,14 @@ const findByIdSuccessReturn = {
 
 const findByIdErrorReturn = undefined;
 
+// addNewProduct mock values
+const insertSuccessReturn = {
+  "insertId": 4,
+}
+
 module.exports = {
   findAllReturn,
   findByIdSuccessReturn,
   findByIdErrorReturn,
+  insertSuccessReturn,
 }
