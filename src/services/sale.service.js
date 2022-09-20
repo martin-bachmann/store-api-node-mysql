@@ -1,5 +1,16 @@
 const { saleModel, productModel } = require('../models');
 
+const getSales = async () => {
+  const result = await saleModel.findAll();
+  return { type: null, message: result };
+};
+
+const getSaleById = async ({ id }) => {
+  const result = await saleModel.findById(id);
+  if (result[0]) return { type: null, message: result };
+  return { type: 'NOT_FOUND', message: 'Sale not found' };
+};
+
 const validateProducts = async (sales) => {
   const products = await productModel.findAll();
   for (let i = 0; i < sales.length; i += 1) {
@@ -15,5 +26,7 @@ const addNewSales = async (sales) => {
 };
 
 module.exports = {
+  getSales,
+  getSaleById,
   addNewSales,
 };
