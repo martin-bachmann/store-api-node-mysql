@@ -31,9 +31,17 @@ const insert = async (product) => {
 };
 
 const updateById = async (productId, name) => {
-  const response = connection.execute(
+  const response = await connection.execute(
     'UPDATE products SET `name` = ? WHERE id = ?',
     [name, productId],
+  );
+  return response;
+};
+
+const deleteById = async (productId) => {
+  const response = await connection.execute(
+    'DELETE FROM products WHERE id = ?',
+    [productId],
   );
   return response;
 };
@@ -43,4 +51,5 @@ module.exports = {
   findById,
   insert,
   updateById,
+  deleteById,
 };
