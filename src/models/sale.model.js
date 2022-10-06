@@ -37,6 +37,15 @@ const insert = async (sales) => {
   return insertId;
 };
 
+const updateById = async (saleId, sales) => {
+  sales.forEach(async (sale) => {
+    await connection.execute(
+      'UPDATE sales_products SET quantity = ? WHERE sale_id = ? AND product_id = ?',
+      [sale.quantity, saleId, sale.productId],
+    );
+  });
+};
+
 const deleteById = async (saleId) => {
   await connection.execute(
     'DELETE FROM sales WHERE id = ?',
@@ -52,5 +61,6 @@ module.exports = {
   findAll,
   findById,
   insert,
+  updateById,
   deleteById,
 };

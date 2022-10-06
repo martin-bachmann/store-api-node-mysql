@@ -10,6 +10,8 @@ router.get('/:id', saleController.getSaleById);
 
 router.post('/', saleMiddleware, saleController.addNewSales);
 
+router.put('/:id', saleMiddleware, saleController.updateSale);
+
 router.delete('/:id', saleController.deleteSale);
 
 module.exports = router;
