@@ -24,6 +24,19 @@ const getProductByIdSucessReturn = {
 
 const getProductByIdErrorReturn = { type: 'NOT_FOUND', message: 'Product not found' }
 
+// getProductByQuery mock values
+const getProductByQuerySuccessReturn = {
+  type: null,
+  message: [
+    {
+      "id": 1,
+      "name": "Martelo de Thor"
+    }
+  ]
+}
+
+const getProductByQueryErrorReturn = { type: 'NOT_FOUND', message: 'Product not found' }
+
 // addNewProduct mock values
 const addNewProductSuccessReturn = {
   type: null,
@@ -33,9 +46,37 @@ const addNewProductSuccessReturn = {
   }
 }
 
+// updateProduct mock values
+const updateProductInput = {
+  "name": "Martelo do Batman"
+}
+
+const updateProductSuccessReturn = {
+  type: null,
+  message: {
+    "id": 1,
+    "name": "Martelo do Batman"
+  }
+}
+
+const updateProductErrorReturn = { type: 'NOT_FOUND', message: 'Product not found' }
+
+// deleteProduct mock values
+const deleteProductSuccessReturn = { type: null };
+
+const deleteProductErrorReturn = { type: 'NOT_FOUND', message: 'Product not found' }
+
+
 module.exports = {
   getProductsReturn,
   getProductByIdSucessReturn,
   getProductByIdErrorReturn,
+  getProductByQuerySuccessReturn,
+  getProductByQueryErrorReturn,
   addNewProductSuccessReturn,
+  updateProductInput,
+  updateProductSuccessReturn,
+  updateProductErrorReturn,
+  deleteProductSuccessReturn,
+  deleteProductErrorReturn,
 }
