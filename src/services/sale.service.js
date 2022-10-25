@@ -26,8 +26,9 @@ const addNewSales = async (sales) => {
 };
 
 const updateSale = async (saleId, sales) => {
-  const result = await saleModel.findById(saleId);
+  const [result] = await saleModel.findById(saleId);
   if (!result) return { type: 'NOT_FOUND', message: 'Sale not found' };
+  if (await validateProducts(sales)) return { type: 'NOT_FOUND', message: 'Product not found' };    
   await saleModel.updateById(saleId, sales);
   return { type: null, message: { saleId, itemsUpdated: sales } };
 };
