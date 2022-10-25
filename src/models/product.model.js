@@ -14,6 +14,13 @@ const findById = async (productId) => {
   return result;
 };
 
+const findByQuery = async (query) => {
+  const [result] = await connection.execute(
+    'SELECT * FROM products WHERE name LIKE ?', [`%${query}%`],
+  );
+  return result;
+};
+
 const insert = async (product) => {
   const columns = Object.keys(product)
     .map((key) => `${key}`)
@@ -49,6 +56,7 @@ const deleteById = async (productId) => {
 module.exports = {
   findAll,
   findById,
+  findByQuery,
   insert,
   updateById,
   deleteById,
