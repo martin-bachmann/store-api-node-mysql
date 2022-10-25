@@ -35,8 +35,6 @@ const getProductByQuerySuccessReturn = {
   ]
 }
 
-const getProductByQueryErrorReturn = { type: 'NOT_FOUND', message: 'Product not found' }
-
 // addNewProduct mock values
 const addNewProductSuccessReturn = {
   type: null,
@@ -72,7 +70,6 @@ module.exports = {
   getProductByIdSucessReturn,
   getProductByIdErrorReturn,
   getProductByQuerySuccessReturn,
-  getProductByQueryErrorReturn,
   addNewProductSuccessReturn,
   updateProductInput,
   updateProductSuccessReturn,

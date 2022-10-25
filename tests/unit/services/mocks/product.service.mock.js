@@ -20,15 +20,38 @@ const findByIdErrorReturn = undefined;
 
 const getProductByIdErrorReturn = { type: 'NOT_FOUND', message: 'Product not found' }
 
-// addNewProduct mock values
-const insertSuccessReturn = {
-  "insertId": 4
-}
+// getProductByQuery mock values
+const findByQuerySuccessReturn = 
+  [
+    {
+      "id": 1,
+      "name": "Martelo de Thor"
+    }
+  ]
 
+
+// addNewProduct mock values
+const insertSuccessReturn = 4
+
+// updateProduct mock values
+const updateByIdSuccessReturn = 
+  {
+    "name": "Martelo de Thor"
+  }
+  
+// deleteProduct mock values
+const deleteByIdSuccessReturn = 
+  {
+    "name": "Martelo de Thor"
+}
+  
 module.exports = {
   findAllReturn,
   findByIdSuccessReturn,
   findByIdErrorReturn,
   getProductByIdErrorReturn,
+  findByQuerySuccessReturn,
   insertSuccessReturn,
+  updateByIdSuccessReturn,
+  deleteByIdSuccessReturn,
 }
